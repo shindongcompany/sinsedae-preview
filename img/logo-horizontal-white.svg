@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 160" role="img" aria-label="신세대 지붕공사">
+  <!-- 어두운 배경(헤더·푸터·사진 위)용 -->
+  <g transform="translate(10 12) scale(0.31)">
+    <g transform="translate(-80 -60)">
+      <g fill="none" stroke-width="26" stroke-linejoin="miter" stroke-miterlimit="10">
+        <path stroke="#C9D4D6" d="M170 262 V190 L347 84 L525 190 V268"/>
+        <path stroke="#C9D4D6" d="M525 362 V486"/>
+        <path stroke="#D4AE7C" d="M170 486 V262 L347 160 L525 268 V362"/>
+        <path stroke="#D4AE7C" d="M183 348 L347 240 L512 348"/>
+      </g>
+      <g fill="#D4AE7C">
+        <rect x="309" y="352" width="34" height="34"/><rect x="351" y="352" width="34" height="34"/>
+        <rect x="309" y="394" width="34" height="34"/><rect x="351" y="394" width="34" height="34"/>
+        <polygon points="120,368 132,376 110,410 98,402"/><polygon points="580,368 568,376 590,410 602,402"/>
+      </g>
+    </g>
+  </g>
+  <text x="200" y="92" fill="#FFFFFF" font-family="Pretendard, 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="60" font-weight="800" letter-spacing="-1">신세대 지붕공사</text>
+  <text x="203" y="130" fill="#C9D4D6" font-family="Pretendard, 'Noto Sans KR', 'Malgun Gothic', sans-serif" font-size="22" font-weight="500" letter-spacing="9.5">SINSEDAE ROOFING</text>
+</svg>

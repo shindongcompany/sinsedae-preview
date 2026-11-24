@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="80 60 540 440" role="img" aria-label="신세대 지붕공사 심볼">
+  <g fill="none" stroke-width="26" stroke-linejoin="miter" stroke-miterlimit="10">
+    <!-- 바깥 지붕선 (블루그레이) -->
+    <path stroke="#8A9C9E" d="M170 262 V190 L347 84 L525 190 V268"/>
+    <path stroke="#8A9C9E" d="M525 362 V486"/>
+    <!-- 안쪽 지붕선 + 벽 (샌드골드) -->
+    <path stroke="#A8865A" d="M170 486 V262 L347 160 L525 268 V362"/>
+    <path stroke="#A8865A" d="M183 348 L347 240 L512 348"/>
+  </g>
+  <!-- 창문 -->
+  <g fill="#A8865A">
+    <rect x="309" y="352" width="34" height="34"/>
+    <rect x="351" y="352" width="34" height="34"/>
+    <rect x="309" y="394" width="34" height="34"/>
+    <rect x="351" y="394" width="34" height="34"/>
+  </g>
+  <!-- 처마 포인트 -->
+  <g fill="#A8865A">
+    <polygon points="120,368 132,376 110,410 98,402"/>
+    <polygon points="580,368 568,376 590,410 602,402"/>
+  </g>
+</svg>

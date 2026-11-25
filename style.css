@@ -498,6 +498,10 @@ h1, h2, h3 { color: var(--slate); margin: 0; letter-spacing: -0.035em; line-heig
 .about-ceo { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 88px); align-items: center; padding-top: var(--sec); padding-bottom: var(--sec); }
 .ceo-photo { margin: 0; }
 .ceo-photo .slot { aspect-ratio: 4 / 5; }
+.ceo-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; border-radius: 28px; background: var(--mist); }
+.ap-photo { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; object-position: 50% 55%; border-radius: 16px; margin-top: 16px; background: var(--mist); }
+.fact-photo { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 55%; border-radius: 16px; margin-bottom: 14px; background: var(--line); }
+.ba figcaption b { color: var(--slate); margin-right: 8px; }
 .ceo-photo svg { width: 55%; }
 .ceo-text .h-section { margin-bottom: 24px; }
 .ceo-sign { margin: 28px 0 0; color: var(--slate); font-weight: 650; }
@@ -752,3 +756,4 @@ h1, h2, h3 { color: var(--slate); margin: 0; letter-spacing: -0.035em; line-heig
   .area-list li { color: var(--slate); }
   .rg:not(.rg-ctx) { fill: var(--steel); }
 }
+.ap-photo-auto { aspect-ratio: auto; }

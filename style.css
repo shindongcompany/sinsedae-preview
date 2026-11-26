@@ -150,9 +150,11 @@ h1, h2, h3 { color: var(--slate); margin: 0; letter-spacing: -0.035em; line-heig
 .js .msg.is-in { opacity: 1; transform: none; }
 
 /* ── 3. 네 가지 약속: 손가락 ── */
-.promise { background: var(--mist); padding: var(--sec) 0; }
-.promise-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(40px, 6vw, 96px); }
-.promise-stick { position: sticky; top: calc(var(--header-h) + 40px); align-self: start; }
+.promise { position: relative; height: 200vh; background: var(--mist); }
+.promise-stage { position: sticky; top: 0; height: 100vh; height: 100svh; padding-top: var(--header-h); display: flex; align-items: center; overflow: hidden; }
+.promise-stage > .promise-grid { width: 100%; }
+.promise-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
+.promise-stick { align-self: center; }
 .hand-wrap { position: relative; margin-top: 32px; width: min(300px, 80%); }
 .hand { width: 100%; overflow: visible; }
 .finger { transform-box: fill-box; transform-origin: 50% 100%; transform: scaleY(.34); transition: transform .6s cubic-bezier(.34, 1.56, .64, 1); }
@@ -165,11 +167,11 @@ h1, h2, h3 { color: var(--slate); margin: 0; letter-spacing: -0.035em; line-heig
 .hand-photos img.idle { opacity: .25; transform: scale(.9); }
 .hand-count { position: absolute; right: -24px; top: 12px; margin: 0; font-size: 64px; font-weight: 800; color: var(--slate); letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
 .hand-count small { font-size: 22px; color: var(--steel); margin-left: 2px; }
-.promise-list { list-style: none; margin: 0; padding: 6vh 0 4vh; display: grid; gap: 11vh; }
-.promise-list h3 { font-size: clamp(26px, 3.2vw, 38px); font-weight: 780; letter-spacing: -0.04em; line-height: 1.3; }
-.promise-list h3::before { content: ""; display: block; width: 32px; height: 4px; border-radius: 2px; background: var(--gold); margin-bottom: 20px; }
-.promise-list p { margin: 14px 0 0; font-size: 18px; max-width: 32em; }
-.js .promise-list li { opacity: 0; transform: translateY(56px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.promise-list { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(18px, 3.4vh, 34px); }
+.promise-list h3 { font-size: clamp(21px, 2.3vw, 29px); font-weight: 780; letter-spacing: -0.04em; line-height: 1.3; }
+.promise-list h3::before { content: ""; display: block; width: 32px; height: 4px; border-radius: 2px; background: var(--gold); margin-bottom: 10px; }
+.promise-list p { margin: 6px 0 0; font-size: 16px; max-width: 34em; }
+.js .promise-list li { opacity: 0; transform: translateY(44px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .js .promise-list li.is-in { opacity: 1; transform: none; }
 .js .promise-list h3::before { transform: scaleX(0); transform-origin: left center; transition: transform .7s cubic-bezier(.6, 0, .3, 1) .2s; }
 .js .promise-list li.is-in h3::before { transform: scaleX(1); }
@@ -690,7 +692,7 @@ h1, h2, h3 { color: var(--slate); margin: 0; letter-spacing: -0.035em; line-heig
 /* 메인: 한 섹션씩 넘김 (app.js가 html.snap 추가, 움직임 줄이기 설정이면 꺼짐) */
 html.snap { scroll-snap-type: y mandatory; scroll-padding-top: 0; }
 html.snap main > section, html.snap main > aside { scroll-snap-align: start; scroll-snap-stop: always; }
-html.snap .service, html.snap .area { scroll-snap-align: none; }
+html.snap .service, html.snap .area, html.snap .promise { scroll-snap-align: none; }
 html.snap .site-footer { scroll-snap-align: end; }
 .snap-mark { position: absolute; left: 0; width: 1px; height: 1px; pointer-events: none; }
 html.snap .snap-mark { scroll-snap-align: start; scroll-snap-stop: always; }
@@ -707,12 +709,17 @@ html.snap .snap-mark { scroll-snap-align: start; scroll-snap-stop: always; }
   .persona-card { display: flex; align-items: center; gap: 20px; text-align: left; padding: 20px 24px; border-radius: 24px; margin-top: 28px; }
   .persona-figure { width: 96px; }
   .persona-card figcaption { margin: 0; }
-  .promise-stick { position: sticky; top: var(--header-h); z-index: 2; background: var(--mist); padding: 16px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .promise-stage { align-items: flex-start; padding-top: calc(var(--header-h) + 12px); }
+  .promise-grid { gap: 14px; align-items: start; }
+  .promise-stick { padding: 4px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .promise-stick .h-section { font-size: clamp(22px, 5.6vw, 30px); }
   .hand-wrap { width: 110px; margin: 0; flex: none; }
   .hand-count { font-size: 30px; right: -10px; top: 0; }
   .hand-count small { font-size: 14px; }
-  .promise-list { padding: 4vh 0 4vh; gap: 9vh; }
+  .promise-list { gap: 14px; }
+  .promise-list h3 { font-size: 19px; }
+  .promise-list p { font-size: 15px; line-height: 1.55; margin-top: 4px; }
+  .promise .more-link { margin-top: 16px; }
   .steps { grid-template-columns: 1fr 1fr; }
   .area-stage { align-items: flex-start; padding-top: calc(var(--header-h) + 24px); }
   .area-grid { gap: 8px; }
@@ -761,8 +768,8 @@ html.snap .snap-mark { scroll-snap-align: start; scroll-snap-stop: always; }
   .ph-roof path { animation: none !important; stroke-dashoffset: 0; }
   .mobile-bar, .float-dock { transition: none; }
   .finger { transform: none; transition: none; }
-  .service, .area { height: auto; }
-  .service-stage, .area-stage { position: relative; height: auto; padding: var(--sec) 0; }
+  .service, .area, .promise { height: auto; }
+  .service-stage, .area-stage, .promise-stage { position: relative; height: auto; padding: var(--sec) 0; }
   .svc-slide, .svc-slide img, .svc-slide figcaption, .svc-steps::before { transition: none; }
   .area-list li { color: var(--slate); }
   .rg:not(.rg-ctx) { fill: var(--steel); }

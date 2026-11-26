@@ -188,12 +188,9 @@
     let handImgs = [];
     const update = () => {
       if (!near(promise)) return;
-      let n = 0;
-      items.forEach((li) => {
-        const show = reduce || li.getBoundingClientRect().top < innerHeight * 0.72;
-        li.classList.toggle('is-in', show);
-        if (show) n = Math.max(n, +li.dataset.n);
-      });
+      // 고정 구간을 4칸으로 나눠 한 칸마다 문구 하나씩 (움직임 줄이기면 전부)
+      const n = reduce ? items.length : Math.min(items.length, Math.floor(progressIn(promise) * items.length) + 1);
+      items.forEach((li, i) => li.classList.toggle('is-in', i < n));
       fingers.forEach((f) => f.classList.toggle('up', +f.dataset.n <= n));
       handImgs.forEach((im, i) => { im.classList.toggle('on', i + 1 === n); im.classList.toggle('idle', n === 0 && i === 0); });
       handN.textContent = n;
@@ -322,6 +319,8 @@
       sec.appendChild(m);
       marks.push(m);
     });
+    // 네 가지 약속: 문구 4개, 각 칸의 가운데
+    if (promise) { const n = $$('.promise-list li', promise).length; addMarks(promise, [...Array(n)].map((_, i) => (i + 0.5) / n)); }
     // 시공 분야: 공종 n개, 각 칸의 가운데 (공종 계산 floor(p*n) 과 같은 기준)
     if (service) { const n = $$('.svc-steps li', service).length; addMarks(service, [...Array(n)].map((_, i) => (i + 0.5) / n)); }
     // 방문 지역: 5곳 하나씩 + 전체 (floor(p*6.2) 기준)
@@ -334,7 +333,7 @@
     onResizeFns.push(placeMarks);
 
     // 섹션 등장 연출: 제목 → 내용 순서로 (한 번만)
-    const REVEAL = ['.talk .h-section', '.persona-card', '.talk-cta', '.promise .h-section', '.hand-wrap',
+    const REVEAL = ['.talk .h-section', '.persona-card', '.talk-cta', '.promise .h-section', '.hand-wrap', '.promise .more-link',
       '#cases .sec-head', '#cases .ba', '#cases .gallery', '#reviews .h-section', '#review-grid', '.cta-band-in',
       '.process .h-section', '.steps-wrap', '.area-copy .h-section', '.area-list', '.area-map',
       '#blog .sec-head', '#blog .lead', '#blog-grid', '.faq .h-section', '.faq details', '.faq .more-link',

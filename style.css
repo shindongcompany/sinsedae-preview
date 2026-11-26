@@ -497,10 +497,10 @@ h1, h2, h3 { color: var(--slate); margin: 0; letter-spacing: -0.035em; line-heig
 @keyframes phRoof { from { stroke-dashoffset: 140; } to { stroke-dashoffset: 0; } }
 
 /* 회사 소개 */
-.about-ceo { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 88px); align-items: center; padding-top: var(--sec); padding-bottom: var(--sec); }
-.ceo-photo { margin: 0; }
+.about-ceo { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; padding-top: var(--sec); padding-bottom: var(--sec); }
+.ceo-photo { margin: 0; width: 100%; max-width: 380px; }
 .ceo-photo .slot { aspect-ratio: 4 / 5; }
-.ceo-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; border-radius: 28px; background: var(--mist); }
+.ceo-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 18%; border-radius: 28px; background: var(--mist); }
 .ap-photo { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; object-position: 50% 55%; border-radius: 16px; margin-top: 16px; background: var(--mist); }
 .fact-photo { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 55%; border-radius: 16px; margin-bottom: 14px; background: var(--line); }
 .ba figcaption b { color: var(--slate); margin-right: 8px; }
@@ -613,7 +613,7 @@ h1, h2, h3 { color: var(--slate); margin: 0; letter-spacing: -0.035em; line-heig
   .header-cta + .menu-btn { margin-left: 0; }
   .review-grid { grid-template-columns: 1fr; }
   .about-ceo, .svc, .contact-area { grid-template-columns: 1fr; }
-  .ceo-photo { max-width: 420px; }
+  .ceo-photo { max-width: 300px; }
   .svc-media { position: static; }
   .svc-media img { aspect-ratio: 16 / 10; }
   .ap-list, .fact-grid { grid-template-columns: 1fr; }

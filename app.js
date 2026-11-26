@@ -306,6 +306,49 @@
     ORDER.forEach((key) => $$(`[data-key="${key}"]`, box).forEach((el) => el.classList.add('on')));
   });
 
+  /* ───────── 메인: 한 번 넘길 때 한 섹션씩 (휠·스와이프 모두) ─────────
+     브라우저 기본 스크롤 스냅을 써서 PC 휠, 트랙패드, 모바일 스와이프가 모두 자연스럽게 동작
+     - 각 섹션 시작에서 멈춤 (화면보다 긴 섹션은 안에서는 자유롭게 스크롤)
+     - 시공 분야·방문 지역은 단계마다 멈춤 표시(.snap-mark)를 넣어 한 번에 한 항목씩
+     - 섹션이 들어오면 제목과 내용이 차례로 올라오며 나타남 */
+  if (hero && !reduce) {
+    document.documentElement.classList.add('snap');
+    const marks = [];
+    const addMarks = (sec, fracs) => fracs.forEach((f) => {
+      const m = document.createElement('span');
+      m.className = 'snap-mark';
+      m.setAttribute('aria-hidden', 'true');
+      m.dataset.f = f;
+      sec.appendChild(m);
+      marks.push(m);
+    });
+    // 시공 분야: 공종 n개, 각 칸의 가운데 (공종 계산 floor(p*n) 과 같은 기준)
+    if (service) { const n = $$('.svc-steps li', service).length; addMarks(service, [...Array(n)].map((_, i) => (i + 0.5) / n)); }
+    // 방문 지역: 5곳 하나씩 + 전체 (floor(p*6.2) 기준)
+    if (area) addMarks(area, [0, 1, 2, 3, 4, 5].map((k) => (k + 0.5) / 6.2));
+    const placeMarks = () => marks.forEach((m) => {
+      const sec = m.parentElement;
+      m.style.top = `${Math.round((sec.offsetHeight - innerHeight) * m.dataset.f)}px`;
+    });
+    placeMarks();
+    onResizeFns.push(placeMarks);
+
+    // 섹션 등장 연출: 제목 → 내용 순서로 (한 번만)
+    const REVEAL = ['.talk .h-section', '.persona-card', '.talk-cta', '.promise .h-section', '.hand-wrap',
+      '#cases .sec-head', '#cases .ba', '#cases .gallery', '#reviews .h-section', '#review-grid', '.cta-band-in',
+      '.process .h-section', '.steps-wrap', '.area-copy .h-section', '.area-list', '.area-map',
+      '#blog .sec-head', '#blog .lead', '#blog-grid', '.faq .h-section', '.faq details', '.faq .more-link',
+      '.quote-intro', '.quote-form'];
+    const secs = $$('main > section, main > aside').filter((x) => x !== hero);
+    secs.forEach((sec) => {
+      $$(REVEAL.join(','), sec).forEach((el, i) => { el.setAttribute('data-reveal', ''); el.style.setProperty('--d', i); });
+    });
+    const shownIO = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('is-shown'); shownIO.unobserve(e.target); }
+    }), { threshold: 0.18 });
+    secs.forEach((sec) => shownIO.observe(sec));
+  }
+
   /* ───────── 전후 비교 슬라이더 (처음 보일 때 손잡이가 한 번 좌우로 움직여 조작법을 알려 줌) ───────── */
   $$('.ba-frame').forEach((f) => {
     const range = $('.ba-range', f);

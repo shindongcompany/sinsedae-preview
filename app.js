@@ -493,6 +493,13 @@
     const more = $('#list-more');
     // 지역이 적힌 사례가 없으면 지역 필터는 숨김
     if (!CASES.some((c) => c.region)) { $('.filter-row[data-key="region"]', box).hidden = true; state.region = ''; }
+    // 사례가 하나도 없는 공종·지역 버튼은 숨김 (사례가 생기면 자동으로 나타남)
+    const has = { service: (v) => CASES.some((c) => c.service === v),
+      region: (v) => CASES.some((c) => (v === '기타' ? c.region && !MAIN5.includes(c.region) : c.region === v)) };
+    $$('.filter-row', box).forEach((row) => $$('button[data-v]', row).forEach((b) => {
+      const v = b.dataset.v;
+      if (v && !has[row.dataset.key](v)) { b.hidden = true; if (state[row.dataset.key] === v) state[row.dataset.key] = ''; }
+    }));
     const src = (u) => (/^https?:/.test(u) ? u : `../${u}`);
     const match = (c) => (!state.service || c.service === state.service)
       && (!state.region || (state.region === '기타' ? c.region && !MAIN5.includes(c.region) : c.region === state.region));

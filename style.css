@@ -565,7 +565,15 @@ h1, h2, h3 { color: var(--slate); margin: 0; letter-spacing: -0.035em; line-heig
 .cases-ba { padding-top: clamp(48px, 6vw, 80px); }
 .cases-ba .ba { margin-top: 28px; }
 .ba-more { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
-.slot-ba { aspect-ratio: 16 / 9; }
+.ba-pair { margin: 0; }
+.ba-pair-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; border-radius: 20px; overflow: hidden; }
+.ba-pair-imgs > div { position: relative; aspect-ratio: 4 / 3; background: var(--mist); }
+.ba-pair-imgs img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ba-pair .ba-tag { top: 10px; bottom: auto; font-size: 12px; padding: 4px 10px; }
+.ba-pair .ba-tag-before { left: 10px; right: auto; }
+.ba-pair .ba-tag-after { left: 10px; right: auto; }
+.ba-pair figcaption { margin-top: 10px; font-size: 15px; font-weight: 600; }
+.filter-row button[hidden] { display: none; }
 .cases-list .h-section { margin-bottom: 24px; }
 .filters { display: grid; gap: 10px; }
 .filter-row { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 2px; }
